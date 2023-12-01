@@ -14,10 +14,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import debug_toolbar # new
 from django.contrib import admin
 from django.urls import path, include # new
 # so every time we go to /playground/ it will look for playground/urls.py and chop off the /playground/ part
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('playground/', include('playground.urls')), # new
+    path('__debug__/', include('debug_toolbar.urls')) # new
 ]
