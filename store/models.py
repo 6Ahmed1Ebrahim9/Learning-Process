@@ -39,3 +39,9 @@ class Order(models.Model):
     
     placed_at = models.DateTimeField(auto_now_add=True) # auto_now_add=True means it will only update once when we create the model
     payment_status = models.CharField(max_length=255, choices=PAYMENT_STATUS_CHOICES, default= PAYMENT_STATUS_PENDING)
+
+# reverse relationship between address and customer is created automatically by django so we dont need to create it
+class Address(models.Model):
+    street = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    customer = models.OneToOneField(Customer, on_delete=models.CASCADE, primary_key=True) # primary_key=True so that we can only have one address per customer
