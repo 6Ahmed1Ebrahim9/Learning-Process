@@ -39,6 +39,11 @@ class Customer(models.Model):
     birth_date = models.DateField(null=True) # null=True means it can be empty
     member_ship = models.CharField(max_length=255, choices=MEMBERSHIP_CHOICES, default= MEMBERSHIP_BRONZE)
     
+    class Meta:
+        db_table = 'store_customers'
+        indexes = [
+            models.Index(fields=['last_name', 'first_name']),
+        ]
     
     
 class Order(models.Model):
