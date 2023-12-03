@@ -64,6 +64,7 @@ class OrderItem(models.Model):
     
 # reverse relationship between address and customer is created automatically by django so we dont need to create it
 class Address(models.Model):
+    zip = models.CharField(max_length=10)
     street = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE) # primary_key=True so that we can only have one address per customer
